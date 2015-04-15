@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :ensure_current_user
-  
+
+  private
 
   def current_user
     if session[:user_id]
@@ -21,6 +22,13 @@ class ApplicationController < ActionController::Base
 
   def disable_nav
     @disable_nav = true
+  end
+
+  def ensure_user_is_current_user
+    if @current_user != @user
+      flash[:alert] = 'You do not have access'
+      redirect_to root_path
+    end
   end
 
 end

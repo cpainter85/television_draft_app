@@ -1,0 +1,11 @@
+.container
+  .page-header
+    -if @current_user == @user
+      .pull-right
+        =link_to 'Change Password', edit_user_path(@user), class: 'btn btn-info'
+    %h1=@user.name
+  %dl.dl-horizontal
+    %dt Email:
+    %dd=@user.email
+    %dt Team Name:
+    %dd=@user.team_name

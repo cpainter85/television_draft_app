@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :ensure_current_user
+  
 
   def current_user
     if session[:user_id]
@@ -13,9 +14,13 @@ class ApplicationController < ActionController::Base
 
   def ensure_current_user
     if !current_user
-      flash[:notice] = 'You must sign in'
+      flash[:alert] = 'You must sign in'
       redirect_to sign_in_path
     end
+  end
+
+  def disable_nav
+    @disable_nav = true
   end
 
 end

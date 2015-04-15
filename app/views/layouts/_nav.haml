@@ -1,0 +1,9 @@
+%nav.navbar-navbar-default.navbar-fixed-top.navbar-inverse
+  .container
+    .navbar-header
+      =link_to 'Home', root_path, class: 'navbar-brand'
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        -if @current_user
+          %li=link_to "#{@current_user.name}"
+          %li=link_to 'Sign Out', sign_out_path

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'sign-in', to: 'authentication#new'
   post 'sign-in', to: 'authentication#create'
+  get 'sign_out', to: 'authentication#destroy'
 
   get 'draft' => 'draft#index'
   # The priority is based upon order of creation: first created -> highest priority.

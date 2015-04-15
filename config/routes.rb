@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   get 'draft' => 'draft#index'
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    resources :picks, only: [:new, :create]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

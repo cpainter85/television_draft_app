@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root 'draft#index'
+
+  get 'sign-in', to: 'authentication#new'
+  post 'sign-in', to: 'authentication#create'
+
+  get 'draft' => 'draft#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

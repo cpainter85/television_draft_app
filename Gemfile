@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'rails_12factor', '~> 0.0.3', group: :production
 
 gem 'haml', '~> 4.0.6'
 gem 'bootstrap-sass', '~> 3.3.4.1'

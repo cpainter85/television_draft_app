@@ -4,21 +4,21 @@
     .form-horizontal
       =form_for [@current_user, @pick] do |f|
         .form-group
-          =f.label :name, class: 'col-sm-4 control-label'
-          .col-sm-8
+          =f.label :name, class: 'col-sm-2 control-label'
+          .col-sm-10
             =f.text_field :name, class: 'form-control'
         .form-group
-          =f.label :show, class: 'col-sm-4 control-label'
-          .col-sm-8
+          =f.label :show, class: 'col-sm-2 control-label'
+          .col-sm-10
             =f.text_field :show, class: 'form-control'
         .form-group
-          =f.label :position, class: 'col-sm-4 control-label'
-          .col-sm-8
+          =f.label :position, class: 'col-sm-2 control-label'
+          .col-sm-10
             =f.collection_select(:position_id, Position.all, :id, :name)
         .form-group
-          =f.label :comment, class: 'col-sm-4 control-label'
-          .col-sm-8
+          =f.label :comment, class: 'col-sm-2 control-label'
+          .col-sm-10
             =f.text_area :comment, :size => 150
         .form-group
-          .col-sm-offset-4.col-sm-8
+          .col-sm-offset-4.col-sm-10
             =f.submit 'Draft Character', class: 'btn btn-info btn-lg'

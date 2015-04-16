@@ -3,19 +3,21 @@
     =link_to 'Draft Character', new_user_pick_path(@current_user), class: 'btn btn-danger btn-lg draft'
   .page-header
     %h1 The Big Board
-  %h2 Round 1
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Team
-        %th Name
-        %th Show
-        %th Position
-    %tbody
-      -@users.each do |user|
+  -while @round < 23
+    %h2="Round #{@round}"
+    %table.table.table-striped
+      %thead
         %tr
-          -if user.picks.find_by(round: 1)
-            %td=user.team_name
-            %td=user.picks.find_by(round: 1).name
-            %td=user.picks.find_by(round: 1).show
-            %td=user.picks.find_by(round: 1).position.name
+          %th Team
+          %th Name
+          %th Show
+          %th Position
+      %tbody
+        -@users.each do |user|
+          %tr
+            -if user.picks.find_by(round: @round)
+              %td=user.team_name
+              %td=user.picks.find_by(round: @round).name
+              %td=user.picks.find_by(round: @round).show
+              %td=user.picks.find_by(round: @round).position.name
+    -@round+=1

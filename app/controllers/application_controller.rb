@@ -31,4 +31,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # def ensure_coach
+  #   if @current_user != @pick.user
+  #     flash[:alert] = 'You do not have access'
+  #     redirect_to root_path
+  #   end
+  # end
+
 end

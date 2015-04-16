@@ -13,11 +13,21 @@
           %th Show
           %th Position
       %tbody
-        -@users.each do |user|
-          %tr
-            -if user.picks.find_by(round: @round)
-              %td=user.team_name
-              %td=user.picks.find_by(round: @round).name
-              %td=user.picks.find_by(round: @round).show
-              %td=user.picks.find_by(round: @round).position.name
+        -if @round % 2 == 1
+          -@users.order(:draft_order).each do |user|
+            %tr
+              -if user.picks.find_by(round: @round)
+                %td=link_to user.team_name, user_path(user)
+                %td=user.picks.find_by(round: @round).name
+                %td=user.picks.find_by(round: @round).show
+                %td=user.picks.find_by(round: @round).position.name
+        -else
+          -@users.order(draft_order: :desc).each do |user|
+            %tr
+              -if user.picks.find_by(round: @round)
+                %td=link_to user.team_name, user_path(user)
+                %td=user.picks.find_by(round: @round).name
+                %td=user.picks.find_by(round: @round).show
+                %td=user.picks.find_by(round: @round).position.name
+
     -@round+=1

@@ -3,6 +3,7 @@
     %h1.text-center="Draft Character (Round #{@current_user.picks.count+1})"
     .form-horizontal
       =form_for [@current_user, @pick] do |f|
+        =render partial: 'shared/errors', locals: {object: @pick}
         .form-group
           =f.label :name, class: 'col-sm-2 control-label'
           .col-sm-10
@@ -15,10 +16,6 @@
           =f.label :position, class: 'col-sm-2 control-label'
           .col-sm-10
             =f.collection_select(:position_id, Position.all, :id, :name)
-        .form-group
-          =f.label :comment, class: 'col-sm-2 control-label'
-          .col-sm-10
-            =f.text_area :comment, :size => 150
         .form-group
           .col-sm-offset-4.col-sm-10
             =f.submit 'Draft Character', class: 'btn btn-info btn-lg'

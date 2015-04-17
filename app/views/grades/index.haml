@@ -1,0 +1,37 @@
+.container
+  .pull-right
+    =link_to 'Draft Character', new_user_pick_path(@current_user), class: 'btn btn-danger btn-lg draft'
+  .page-header
+    %h1 The Big Board
+  -while @round < 23
+    %h2="Round #{@round}"
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Team
+          %th Name
+          -@users.each do |user|
+            %th=user.name
+      %tbody
+        -if @round % 2 == 1
+          -@users.order(:draft_order).each do |user|
+            %tr
+              %td=link_to user.team_name, user_path(user)
+              -if user.picks.find_by(round: @round)
+                %td=user.picks.find_by(round: @round).name
+              -else
+                %td
+                %td
+                %td
+        -else
+          -@users.order(draft_order: :desc).each do |user|
+            %tr
+              %td=link_to user.team_name, user_path(user)
+              -if user.picks.find_by(round: @round)
+                %td=user.picks.find_by(round: @round).name
+              -else
+                %td
+                %td
+                %td
+
+    -@round+=1

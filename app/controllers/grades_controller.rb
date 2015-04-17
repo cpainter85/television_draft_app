@@ -1,6 +1,6 @@
 class GradesController < ApplicationController
   def index
-    @users = User.all
+    @picks = Pick.all
     @round = 1
   end
 end

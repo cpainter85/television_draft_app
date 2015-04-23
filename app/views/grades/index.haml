@@ -11,12 +11,12 @@
           -@users.order(:id).each do |user|
             %th=user.name
       %tbody
-        -@picks.where(round: @round).each do |pick|
+        -@picks.order(:id).where(round: @round).each do |pick|
 
           %tr
 
             %td="#{pick.name} (#{pick.user.team_name})"
-            %td=link_to 'Add/Edit Grade', edit_pick_grade_path(pick, pick.grades.find_by(user_id: @current_user.id).id)
+            %td=link_to 'Add/Edit Grade', edit_pick_grade_path(pick, pick.grades.find_by(user_id: @current_user.id).id), class: 'btn btn-success btn-sm'
 
             -pick.grades.order(:user_id).each do |grade|
               %td=grade.grade

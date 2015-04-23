@@ -1,0 +1,12 @@
+.container
+  .page-header
+    %h1="#{@pick.name} (#{@pick.user.team_name})"
+  .form-inline
+    =form_for [@pick, @grade] do |f|
+      =render partial: 'shared/errors', locals: {object: @grade}
+      .form-group
+        =f.label :grade
+        =f.text_field :grade, class: 'form-control'
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          =f.submit 'Add/Edit Grade' , class: 'btn btn-info btn-lg'

@@ -8,7 +8,7 @@
         %tr
           %th
           %th
-          -@users.each do |user|
+          -@users.order(:id).each do |user|
             %th=user.name
       %tbody
         -@picks.where(round: @round).each do |pick|

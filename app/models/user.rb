@@ -3,4 +3,5 @@ class User < ActiveRecord::Base
 
   has_many :picks
   has_many :positions, through: :picks
+  has_many :grades
 end

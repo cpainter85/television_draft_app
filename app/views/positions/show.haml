@@ -1,0 +1,17 @@
+.container
+  .page-header
+    %h1=@position.name
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Team
+        %th Character
+        %th Show
+        %th Round Drafted
+    %tbody
+      -@position.picks.each do |pick|
+        %tr
+          %td=link_to "#{pick.user.team_name} (#{pick.user.name})", pick.user
+          %td=pick.name
+          %td=pick.show
+          %td=pick.round

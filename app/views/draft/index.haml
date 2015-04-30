@@ -21,7 +21,7 @@
               -if user.picks.find_by(round: @round)
                 %td=user.picks.find_by(round: @round).name
                 %td=user.picks.find_by(round: @round).show
-                %td=user.picks.find_by(round: @round).position.name
+                %td=link_to user.picks.find_by(round: @round).position.name, user.picks.find_by(round: @round).position
               -else
                 %td
                 %td
@@ -33,7 +33,7 @@
               -if user.picks.find_by(round: @round)
                 %td=user.picks.find_by(round: @round).name
                 %td=user.picks.find_by(round: @round).show
-                %td=user.picks.find_by(round: @round).position.name
+                %td=link_to user.picks.find_by(round: @round).position.name, user.picks.find_by(round: @round).position
               -else
                 %td
                 %td

@@ -16,7 +16,7 @@
     %tbody
       -@positions.each do |position|
         %tr
-          %td=position.name
+          %td=link_to position.name, position
           -if @user.picks.find_by(position_id: position.id)
             %td=@user.picks.find_by(position_id: position.id).name
             %td=@user.picks.find_by(position_id: position.id).show

@@ -2,7 +2,7 @@ class Grade < ActiveRecord::Base
   belongs_to :user
   belongs_to :pick
 
-  def self.grade_placeholder(round)
+  def self.round_grade_placeholder(round)
     picks = Pick.all.where(round: round)
     users = User.all
     picks.each do |pick|

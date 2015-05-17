@@ -8,6 +8,7 @@ class PicksController < ApplicationController
     @pick = @current_user.picks.new(params.require(:pick).permit(:name, :show, :position_id))
     @pick.round = @current_user.picks.count+1
     if @pick.save
+      @pick.grade_placeholder
       redirect_to root_path, notice: "#{@pick.name} has been added to your team!"
     else
       render :new
